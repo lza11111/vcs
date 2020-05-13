@@ -52,7 +52,7 @@ export default {
 
     effects: {
         * getAllOS(_, { put, call }) {
-            const data = yield call(
+            const {data} = yield call(
                 dashboardService.getAllOS,
             );
             yield put({ type: 'setSysVersion', payload: data });
@@ -60,7 +60,7 @@ export default {
 
         * getAllService({ payload }, {put, call}) {
             const { page, pageSize } = payload;
-            const data = yield call(
+            const {data} = yield call(
                 dashboardService.getAllService,
                 { page, pageSize }
             );

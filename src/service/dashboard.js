@@ -9,8 +9,8 @@ export function getAllOS() {
 export function getAllService({ page, pageSize }){
     return Fetch.get('/api/service/getAllService',{page: page , pageSize: pageSize});
 }
+
 export default {
     getAllOS,
     getAllService,
-    
 };

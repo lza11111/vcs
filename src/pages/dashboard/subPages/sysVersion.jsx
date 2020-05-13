@@ -13,7 +13,19 @@ function sysVersion(props) {
       <Row span={24}>
         <Col span={3}><b>开发中版本：</b>{wipVersion.osVersion}</Col>
         <Col span={10}><Progress percent={wipVersion.osProgress * 100} /></Col>
-        <Col offset={1}><a>详情</a></Col>
+        <Col offset={1} >
+        <a onClick={() => {
+              dispatch({
+                 type: 'sysDetail/getOsDetailByVersion', 
+                 payload: {osName: wipVersion.osName , osVersion: wipVersion.osVersion} 
+                });
+              dispatch({ 
+                type: 'sysDetail/queryServiceListByOsVersion', 
+                payload: {osName: wipVersion.osName , osVersion: wipVersion.osVersion , page: 1, pageSize: 10} 
+              });
+              
+          }}>详情</a>
+          </Col>
       </Row>
       <Row>
         <Col><b>计划release日期：</b>{wipVersion.osDate}</Col>

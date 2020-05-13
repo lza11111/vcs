@@ -7,8 +7,10 @@ function appVersion(props) {
   const { dashboard,dispatch } = props;
   const { saData } = dashboard;
 
-  const modelMap = saData.rows.reduce((prev, curr) => (
-    (prev[curr.moduleId] = prev[curr.moduleId] ? prev[curr.moduleId] + 1 : 1) && prev
+  const modelMap = saData.rows.reduce(
+    (prev, curr) => (
+    (prev[curr.moduleId] = prev[curr.moduleId] 
+      ? prev[curr.moduleId] + 1 : 1) && prev
   ), {});
   console.log(modelMap);
 
@@ -17,7 +19,7 @@ function appVersion(props) {
       return {
         children: text,
         props: {
-          rowSpan: record.moduleId === saData[index - 1].moduleId ?
+          rowSpan: record.moduleId === saData.rows[index - 1].moduleId ?
             0 : modelMap[record.moduleId]
         }
       }
